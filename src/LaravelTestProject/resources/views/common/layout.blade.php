@@ -1,0 +1,2 @@
+@yield('index')
+@yield('book')

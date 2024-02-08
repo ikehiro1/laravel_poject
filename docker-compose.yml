@@ -18,9 +18,9 @@ services:
     # 名前付きボリュームを設定する（名前付きボリューム:コンテナ側ボリュームの場所）
     volumes:
       - db_data_test:/var/lib/mysql
-      - db_my.cnf_test:/etc/mysql/conf.d/my.cnf
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
       - db_sql_test:/docker-entrypoint-initdb.d
-
+      
   php:
     build: ./docker/php
     container_name: "php-fpm"
@@ -41,7 +41,7 @@ services:
     # サービスの依存関係を指定（nginxをphpに依存させる）
     depends_on:
       - php
-
+      
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: "phpmyadmin_test"
@@ -76,3 +76,4 @@ volumes:
   db_data_test:
   db_my.cnf_test:
   db_sql_test:
+  
